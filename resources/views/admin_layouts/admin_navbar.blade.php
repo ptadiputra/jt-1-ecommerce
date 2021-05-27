@@ -45,9 +45,11 @@
                 <!-- Counter - Alerts -->
                 @if ($notif->count() != 0)
                     <span class="badge badge-danger badge-counter">
+                        
+                        
                                 
                         <!-- Counter - Alerts -->
-                        @if ($notif->count() > 5)
+                        @if ($notif->count() >= 5)
                             {{ $notif->count() }}+
                             
                         @else

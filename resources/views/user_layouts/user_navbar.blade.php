@@ -89,18 +89,18 @@
 
                                 @if ($notif->count() != 0)
                                 
-                                <!-- Counter - Alerts -->
-                                @if ($notif->count() >= 5)
-                                <span class="badge badge-danger badge-counter">
-                                    {{ $notif->count() }}+
-                                </span>
-                                    
-                                @else
-                                <span class="badge badge-danger badge-counter">
-                                    {{ $notif->count() }}
-                                </span>
-                                    
-                                @endif
+                                    <!-- Counter - Alerts -->
+                                    @if ($notif->count() >= 5)
+                                        <span class="badge badge-danger badge-counter">
+                                            {{ $notif->count() }}+
+                                        </span>
+                                        
+                                    @else
+                                        <span class="badge badge-danger badge-counter">
+                                            {{ $notif->count() }}
+                                        </span>
+                                        
+                                    @endif
                                 
                                 @endif
                             </a>
