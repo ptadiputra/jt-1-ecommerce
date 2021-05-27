@@ -179,7 +179,7 @@
                                 <button class="sdw-wrap btn-danger" >
                                     <a  class="sdw-hover btn btn btn-material btn-danger">
                                         {{-- <i class="icon icofont icofont-close-circled"></i> --}}
-                                        <span class="body">canceled</span></a>
+                                        <span class="body" onclick="return confirm('Anda yakin ingin membatalkan pesanan?')">canceled</span></a>
 
                                 </button> 
                             </form>
