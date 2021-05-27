@@ -21,28 +21,44 @@
                             <!-- Info panel -->
                             <div class="info-panel">
                                 <ul>
-                                    <li>12 december 2017</li>
-                                    <li><a href="#">Creative</a></li>
-                                    <li><a href="#">John Doe</a></li>
+                                    <li>27 Mei 2020</li>
+                                    <li><a>Anggota Kelompok</a></li>
+                                    <li><a>Budhi</a></li>
                                 </ul>
                             </div>
                             
                             <!-- Header -->
                             <div class="header">
                                 <h1>
-                                    Aliquam earum eum expedita quo quasi?
+                                    Tentang Dapur Online
                                 </h1>
                             </div>
                             
                             <!-- Item body -->
                             <div class="item-body">
-                               
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam veniam quas beatae, provident facilis, voluptatibus accusamus alias eveniet. Id cupiditate commodi sed quis ex totam illo sint nesciunt explicabo quidem molestias inventore dolor, exercitationem ratione dignissimos laborum quam iure nisi, eaque quibusdam aspernatur rem doloremque dolores vitae. Minima saepe, rem assumenda natus tenetur non facere sed voluptatibus eligendi aperiam hic, quam dolor itaque modi autem enim dolore eum iure adipisci necessitatibus magni accusantium odio, molestiae deleniti! Tempora, corporis quibusdam ea voluptatum temporibus animi asperiores quisquam beatae modi id doloribus quod consequatur, reprehenderit maiores quidem velit neque, voluptas sapiente! Omnis quasi quas nihil natus illum.
+                                    1. Ida Bagus Dwiweka Naratama (1905551080)
+                                    Membuat modul 4 & 5 dengan Marvell Hasea Tampubolon (1905551063)
                                 </p>
-                                
                                 <p>
-                                    Nam voluptatibus atque adipisci, similique fuga nulla cum sequi eius! A suscipit, dolores illum animi ratione et sed dolor sequi quis illo error pariatur eligendi, nemo, voluptates quae, neque voluptas ut vitae! Quidem eum veritatis, tempore ab incidunt dolore quas sint deleniti pariatur, animi quod! Optio odio repellendus veritatis officiis unde illo porro aspernatur expedita ipsum. Dolores aliquam ea illo odit sunt, repellat temporibus non autem officiis harum provident ducimus architecto commodi rem impedit, suscipit quos, reprehenderit perferendis. Provident obcaecati ullam ex, tempore qui corporis doloremque. Perferendis vitae non blanditiis quod quisquam, numquam. Nostrum, eaque, dicta?
+                                    2. I Gede Budhi Arta Kusuma Giri (1905551075)
+                                    Membuat modul 2 & 3 dengan Christopher Edwin Sirait (1905551166)
+                                </p>
+                                <p>
+                                    3. Marvell Hasea Tampubolon (1905551063)
+                                    Membuat modul 4 & 5 dengan Ida Bagus Dwiweka Naratama (1905551080)
+                                </p>
+                                <p>
+                                    4. Meita Dianty (1905551011)
+                                    Membuat modul 1 & Laporan dengan Putu Ary Silvia Maharani (1905551013)
+                                </p>
+                                <p>
+                                    5. Putu Ary Silvia Maharani (1905551013)
+                                    Membuat modul 1 & Laporan dengan Meita Dianty (1905551011)
+                                </p>
+                                <p>
+                                    6. Putu Ary Silvia Maharani (1905551013)
+                                    Membuat modul 1 & Laporan dengan Meita Dianty (1905551011)
                                 </p>
                             </div>
                         </div>

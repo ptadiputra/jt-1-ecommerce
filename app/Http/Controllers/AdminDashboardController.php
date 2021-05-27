@@ -210,8 +210,6 @@ class AdminDashboardController extends Controller
     public function upload_response ($id, Request $request){
         $data_review = ProductReview::find($id);
         
-
-
         $response = $request->all();
         $response ['admin_id'] = Auth::user()->id;
         $response ['review_id'] = $id;
