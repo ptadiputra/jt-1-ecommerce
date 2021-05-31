@@ -176,10 +176,10 @@
                         <span class="btn-panel text-left">
                             <form action="/produk/cancel/{{$data_transaksi->id}}" method="POST">
                                 @csrf
-                                <button class="sdw-wrap btn-danger" >
+                                <button class="sdw-wrap btn-danger" onclick="return confirm('Anda yakin ingin membatalkan pesanan ini?')">
                                     <a  class="sdw-hover btn btn btn-material btn-danger">
                                         {{-- <i class="icon icofont icofont-close-circled"></i> --}}
-                                        <span class="body" onclick="return confirm('Anda yakin ingin membatalkan pesanan?')">canceled</span></a>
+                                        <span class="body">canceled</span></a>
 
                                 </button> 
                             </form>
