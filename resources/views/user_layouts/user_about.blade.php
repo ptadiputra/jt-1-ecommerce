@@ -53,8 +53,8 @@
                                     Membuat modul 1 & Laporan dengan Putu Ary Silvia Maharani (1905551013)
                                 </p>
                                 <p>
-                                    5. Putu Ary Silvia Maharani (1905551013)
-                                    Membuat modul 1 & Laporan dengan Meita Dianty (1905551011)
+                                    5. Christopher Edwin Sirait (1905551166)
+                                    Membuat modul 2 & 3 dengan I Gede Budhi Arta Kusuma Giri (1905551075)
                                 </p>
                                 <p>
                                     6. Putu Ary Silvia Maharani (1905551013)

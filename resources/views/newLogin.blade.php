@@ -64,14 +64,14 @@
                                     </span>
                                 @enderror
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input class="form-check-input custom-control-user" type="checkbox" 
                                                 name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                                 <label class="custom-control-label" for="customCheck"> Remember Me</label>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <button type="submit" class="btn btn-primary btn-user btn-block ">
                                     {{ __('Login') }}
                                 </button>

@@ -279,7 +279,7 @@ CONTENT
                             <form action="/produk/cart/{{ $cart->id }}/deletecart" method="post">
                                 @csrf
                                 @method('DELETE')
-                                    <button type="submit" class="remove-btn" onclick="return confirm('Anda yakin ingin hapus data ini?')">
+                                    <button type="submit" class="remove-btn" onclick="return confirm('Anda yakin ingin membatalkan barang ini?')">
                                         <i class="icofont icofont-close-line"></i>
                                     </button>
                             </form>
