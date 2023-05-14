@@ -15,50 +15,44 @@
                             
                             <!-- Image -->
                             <div class="image">
-                                <img src="{{ asset('pengguna/html/images/blog/img-01-big.jpg') }}" alt="">
+                                <img src="{{ asset('pengguna/html/images/blog/foto.jpg') }}" alt="">
                             </div>
                             
                             <!-- Info panel -->
                             <div class="info-panel">
                                 <ul>
-                                    <li>27 Mei 2020</li>
-                                    <li><a>Anggota Kelompok</a></li>
-                                    <li><a>Budhi</a></li>
+                                    <li></li>
+                                    <li><a></a></li>
+                                    <li><a></a></li>
                                 </ul>
                             </div>
                             
                             <!-- Header -->
                             <div class="header">
                                 <h1>
-                                    Tentang Dapur Online
+                                    Tentang GO Iridescent
                                 </h1>
                             </div>
                             
                             <!-- Item body -->
                             <div class="item-body">
                                 <p>
-                                    1. Ida Bagus Dwiweka Naratama (1905551080)
-                                    Membuat modul 4 & 5 dengan Marvell Hasea Tampubolon (1905551063)
+                                    GO Iridescent adalah Grup Order yang menjual berbagai barang yang diimpor langsung
                                 </p>
                                 <p>
-                                    2. I Gede Budhi Arta Kusuma Giri (1905551075)
-                                    Membuat modul 2 & 3 dengan Christopher Edwin Sirait (1905551166)
+                                    dari Korea Selatan. GO Iridescent bertempat di Bandung, Indonesia yang sudah berdiri
                                 </p>
                                 <p>
-                                    3. Marvell Hasea Tampubolon (1905551063)
-                                    Membuat modul 4 & 5 dengan Ida Bagus Dwiweka Naratama (1905551080)
+                                    sejak Agustus 2020.
                                 </p>
                                 <p>
-                                    4. Meita Dianty (1905551011)
-                                    Membuat modul 1 & Laporan dengan Putu Ary Silvia Maharani (1905551013)
+                                  
                                 </p>
                                 <p>
-                                    5. Christopher Edwin Sirait (1905551166)
-                                    Membuat modul 2 & 3 dengan I Gede Budhi Arta Kusuma Giri (1905551075)
+                                    
                                 </p>
                                 <p>
-                                    6. Putu Ary Silvia Maharani (1905551013)
-                                    Membuat modul 1 & Laporan dengan Meita Dianty (1905551011)
+                                    
                                 </p>
                             </div>
                         </div>

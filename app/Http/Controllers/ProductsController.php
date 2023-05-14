@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Products;
+use App\Imports\ProductImport;
+use App\Exports\ProductExport;
+use Excel;
+use App\Http\Controllers\Controller;
+use App\Products; 
 use App\Categories;
 use App\Discounts;
 use App\ProductImages;
@@ -19,6 +23,15 @@ class ProductsController extends Controller
     public function buatproduk(){
         $data_kategori = Categories::all();
         return view('admin_layouts.product.admin_tambahproduk', compact('data_kategori'));
+    }
+
+    public function productexport (){
+        return Excel::download(new ProductExport, 'product.xlsx');
+    }
+
+    public function productimportexcel(Request $request){
+        Excel::import(new ProductImport, $request->file);
+        return redirect('/admin/produk');
     }
 
     public function tambahproduk(Request $request){
@@ -101,7 +114,7 @@ class ProductsController extends Controller
     public function hapusproduk ($id){
         $produk = Products::find($id);
         $produk->delete();
-        return redirect ('/admin/produk')->with('sukses','Data produk berhasil dihapus');
+        return redirect ('/admin/produk/')->with('sukses','Data produk berhasil dihapus');
     }
 
     public function buatfoto ($id){
@@ -149,6 +162,17 @@ class ProductsController extends Controller
         }
         ProductImages::insert($files);
         return redirect('admin/produk/'.$produk->id.'/view')->with('sukses','Foto produk berhasil ditambahkan');
+    }
+
+    public function productSearch(Request $request){
+        $recent_products=Products::orderBy('id')->limit(3)->get();
+        $products=Products::orwhere('title','like','%'.$request->search.'%')
+                    ->orwhere('slug','like','%'.$request->search.'%')
+                    ->orwhere('description','like','%'.$request->search.'%')
+                    ->orwhere('price','like','%'.$request->search.'%')
+                    ->orderBy('id','DESC')
+                    ->paginate('9');
+        return view('frontend.pages.product-grids')->with('products',$products)->with('recent_products',$recent_products);
     }
 
 

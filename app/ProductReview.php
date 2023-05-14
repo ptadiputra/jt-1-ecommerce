@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductReview extends Model
 {
     protected $table = "product_reviews";
-    protected $fillable = ['product_id','user_id','rate','content'];
+    protected $fillable = ['product_id','user_id','rate', 'ulasan1', 'ulasan2', 'ulasan3', 'content'];
 
     public function produk(){
         return $this->belongsTo(Products::class);

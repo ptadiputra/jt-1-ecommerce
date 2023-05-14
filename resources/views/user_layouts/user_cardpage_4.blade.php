@@ -229,7 +229,7 @@
                                                     <div class="col-sm-12">
                                                         {{-- <label for="exampleFormControlSelect1">Rating</label> --}}
                                                         <select name="product_id" class="form-control" id="exampleFormControlSelect1" style="padding: 0px ">
-                                                            <option selected disabled>Chose Product</option>
+                                                            <option selected disabled>Choose Product</option>
                                                             @foreach ($data_transaksi->produk as $produk)
                                                                 
                                                                 <option value="{{ $produk->id }}">{{ $produk->product_name }}</option>
@@ -245,6 +245,33 @@
                                                             <option value="3">3</option>
                                                             <option value="4">4</option>
                                                             <option value="5">5</option>
+                                                        </select>
+
+                                                        <select name="rate" class="form-control" id="exampleFormControlSelect1" style="padding: 0px ">
+                                                            <option selected disabled>Ulasan 1</option>
+                                                            <option value="1">Pesanan sampai dengan baik</option>
+                                                            <option value="2">Kecepatan pengiriman sesuai</option>
+                                                            <option value="3">Harga barang sesuai estimasi</option>
+                                                            <option value="4">Pesanan yang diterima lengkap</option>
+                                                            <option value="5">Kondisi barang baru</option>
+                                                        </select>
+
+                                                        <select name="rate" class="form-control" id="exampleFormControlSelect1" style="padding: 0px ">
+                                                            <option selected disabled>Ulasan 2</option>
+                                                            <option value="1">Pesanan sampai dengan baik</option>
+                                                            <option value="2">Kecepatan pengiriman sesuai</option>
+                                                            <option value="3">Harga barang sesuai estimasi</option>
+                                                            <option value="4">Pesanan yang diterima lengkap</option>
+                                                            <option value="5">Kondisi barang baru</option>
+                                                        </select>
+
+                                                        <select name="rate" class="form-control" id="exampleFormControlSelect1" style="padding: 0px ">
+                                                            <option selected disabled>Ulasan 3</option>
+                                                            <option value="1">Pesanan sampai dengan baik</option>
+                                                            <option value="2">Kecepatan pengiriman sesuai</option>
+                                                            <option value="3">Harga barang sesuai estimasi</option>
+                                                            <option value="4">Pesanan yang diterima lengkap</option>
+                                                            <option value="5">Kondisi barang baru</option>
                                                         </select>
                                                       </div>
                                                     <div class="col-sm-12">

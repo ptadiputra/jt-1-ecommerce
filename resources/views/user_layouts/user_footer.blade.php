@@ -44,17 +44,17 @@
                                         <ul class="list-icon white ">
                                             <li>
                                                 <i class="icon icofont icofont-location-pin"></i>
-                                                Teknologi Informasi Universitas Udayana
+                                                Bandung, Indonesia
                                             </li>
                                             <li>
                                                 <a href="mailto:info@example.com">
                                                     <i class="icon icofont icofont-email"></i>
-                                                    dapur@online.com
+                                                    goiridescent@gmail.com
                                                 </a>
                                             </li>
                                             <li>
                                                 <i class="icon icofont icofont-phone-circle"></i>
-                                                +62 85 536 553 596
+                                                +62 878 4528 9347
                                             </li>
                                             <li>
                                                 <i class="icon icofont icofont-clock-time"></i>
@@ -67,18 +67,18 @@
                                     
                                     <div class="col-md-6">
                                         <div class="footer-brand">
-                                            <img src="{{ asset('pengguna/html/images/main-brand.png') }}" alt="">
+                                            <img src="{{ asset('pengguna/html/images/logo2.png') }}" alt="">
                                         </div>
                                         
                                         <span class="comp-header st-12 text-uppercase">
-                                            Dapur
+                                            GO
                                             <span>
-                                                Online
+                                                Iridescent
                                             </span>
                                         </span>
                                         
                                         <p>
-                                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor nisi elit consequat ipsum, nec sagittis sem nibh id elit.
+                                            Buy your Korean Stuff here.
                                         </p>
                                     </div>
                                 </div>
@@ -87,40 +87,29 @@
                                         
                                         <ul class="social ">
                                             <li>
-                                                <a href="#">
-                                                    <i class="icofont icofont-social-facebook"></i>
+                                                <a href="http://line.me/ti/p/~baebeey">
+                                                    <i class="icofont icofont-social-line"></i>
                                                 </a>
                                             </li>
                                             
                                             <li>
-                                                <a href="#">
-                                                    <i class="icofont icofont-social-google-plus"></i>
-                                                </a>
-                                            </li>
-                                            
-                                            <li>
-                                                <a href="#">
+                                                <a href="https://twitter.com/abitIuv">
                                                     <i class="icofont icofont-social-twitter"></i>
                                                 </a>
                                             </li>
-                                            
+                                           
                                             <li>
-                                                <a href="#">
-                                                    <i class="icofont icofont-social-vk"></i>
-                                                </a>
-                                            </li>
-                                            
-                                            <li>
-                                                <a href="#">
+                                                <a href="https://instagram.com/marcelinelch_">
                                                     <i class="icofont icofont-social-instagram"></i>
                                                 </a>
                                             </li>
                                             
                                             <li>
-                                                <a href="#">
-                                                    <i class="icofont icofont-social-youtube-play"></i>
+                                                <a href="https://wa.me/087845289347">
+                                                    <i class="icofont icofont-social-whatsapp"></i>
                                                 </a>
                                             </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -137,27 +126,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <span class="copy">
-                                    © 2021 Praktikum Prognet. All rights reserved.
+                                    © 2023 Marceline Lionita Chandra. All rights reserved.
                                 </span>
                             </div>
                            
-                            <div class="col-md-6 ">
-                                
-                                <ul class="vrt-icons text-yellow pull-right">
-                                    <li>
-                                        <i class="icofont icofont-paypal-alt"></i>
-                                    </li>
-                                    <li>
-                                        <i class="icofont icofont-visa-alt"></i>
-                                    </li>
-                                    <li>
-                                        <i class="icofont icofont-mastercard-alt"></i>
-                                    </li>
-                                    <li>
-                                        <i class="icofont icofont-american-express-alt"></i>
-                                    </li>
-                                </ul>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>

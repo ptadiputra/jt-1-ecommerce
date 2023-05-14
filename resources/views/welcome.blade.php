@@ -43,7 +43,7 @@ SLIDESHOW
                                 
                                 <!-- Image -->
                                 <div class="img">
-                                    <img src="{{ asset('pengguna/html/images/slideshow/img-01.png') }}" alt="">
+                                    <img src="{{ asset('pengguna/html/images/slideshow/img-04.png') }}" alt="">
                                 </div>
                                 
                                 {{-- <!-- Badge Sale -->
@@ -181,7 +181,7 @@ SLIDESHOW
                                 
                                 <!-- Image -->
                                 <div class="img">
-                                    <img src="{{ asset('pengguna/html/images/slideshow/img-02.png') }}" alt="">
+                                    <img src="{{ asset('pengguna/html/images/slideshow/img-05.jpg') }}" alt="">
                                 </div>
                                 
                                 <!-- Badge Sale-->
@@ -332,7 +332,7 @@ SLIDESHOW
                                 <!-- Image -->
                                 
                                 <div class="img">
-                                    <img src="{{ asset('pengguna/html/images/slideshow/img-03.png') }}" alt="">
+                                    <img src="{{ asset('pengguna/html/images/slideshow/img-06.jpg') }}" alt="">
                                 </div>
 
                                 @foreach ($produk_3->diskon as $diskonbarang)
@@ -450,6 +450,9 @@ SLIDESHOW
     </div>
 </div>
 <!-- END: SLIDESHOW -->
+
+
+
     
 <!-- END: LATEST ON BLOG -->
 @endsection

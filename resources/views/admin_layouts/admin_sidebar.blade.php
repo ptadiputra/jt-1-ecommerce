@@ -3,10 +3,10 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-blender"></i>
+            <i class="fas fa-music"></i>
             </div>
         <div class="sidebar-brand-text mx-2">
-            Dapur Online
+            GO Iridescent
             {{-- <sup>2</sup> --}}
         </div>
     </a>

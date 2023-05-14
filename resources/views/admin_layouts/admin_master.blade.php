@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin GO Iridescent - Dashboard</title>
 
     <!-- Qwl Carousel2-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" rel="stylesheet" />
@@ -67,7 +67,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Praktikum Prognet 13 2021</span>
+                    <span>Copyright &copy; Marceline Lionita Chandra</span>
                     </div>
                 </div>
             </footer>

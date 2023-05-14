@@ -6,14 +6,20 @@ use Illuminate\Support\Facades\Auth;
 Route::view('/', 'welcome');
 Auth::routes();
 
+Route::get ('/', function() {
+    MessageCreated::dispatch('lorem ipsum dolor sit amet');
+});
+
 Route::group(['middleware'=> ['guest']],function () {
     Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
     Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
-    
+    route::get('/exportproduct','ProductsController@productexport')->name('exportproduct');
     Route::post('/login/admin', 'Auth\LoginController@adminLogin');
     Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
+    route::post('/importproduct','ProductsController@productimportexcel')->name('importproduct');
+    Route::get('cetak_transaksi', 'AdminDashboardController@cetakTransaksi')->name('cetak_transaksi');
+    
 });
-
 Route::get('/login/costumer', 'Auth\LoginController@showCostumerLoginForm');
 Route::get('/register/costumer', 'Auth\RegisterController@showCostumerRegisterForm');
 
@@ -24,8 +30,9 @@ Route::view('/home', 'home')->middleware('auth');
 Route::view('/admin', 'admin/dashboard');
 Route::view('/costumer', 'costumer');
 
+Route::post('/contact/message','MessageController@store')->name('contact.store');
 Route::get('/logout/admin', 'Auth\LoginController@logoutadmin');
-
+Route::post('/product/search','ProductsController@productSearch')->name('product.search');
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +81,14 @@ Route::get('/new-register', function(){
 
 Route::get('/new-forget', function(){
     return view ('newForget');
+});
+
+Route::get('/tracking', function(){ 
+    return view('tracking');
+});
+
+Route::get('/contact', function(){ 
+    return view('contact');
 });
 
 Auth::routes(['verify' => true]);

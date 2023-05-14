@@ -65,6 +65,7 @@ class AdminDashboardController extends Controller
        return view('admin_layouts.admin_transaksi', compact('data_transaksi'));
     }
 
+
     public function viewdetail($id){
        $data_transaksi = Transactions::find($id);
     //    return ($data_transaksi->proof_of_payment);

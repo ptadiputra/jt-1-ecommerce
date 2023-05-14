@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="{{ asset('pengguna/html/images/main-brand.png') }}" alt="" class="brand">
+                        <img src="{{ asset('pengguna/html/images/logo3.png') }}" alt="" class="brand">
                     </a>
                 </div>
 
@@ -26,7 +26,7 @@
                        
                         <div class="phone text-blue">
                             <i class="icofont icofont-phone-circle"></i>
-                            +62 85 536 553 596
+                            +62 878 4528 9347
                         </div>
                         
                         {{-- <form class="search bg-grey-light btn-material">
@@ -236,19 +236,33 @@
                     <ul class="nav navbar-nav">
                         <li class="{{ request()->is('welcome','/') ? 'active' : '' }}">
                             <a href="/welcome">
-                                home
+                                Home
                             </a>
                         </li>
                         <li class="{{ request()->is('kategori') ? 'active' : '' }}">
                             <a href="/kategori">
-                                product category
+                                Product Category
                             </a>
                         </li>
                         <li class="{{ request()->is('about') ? 'active' : '' }}">
                             <a href="/about">
-                                about us
+                                About Us
                             </a>
                         </li>
+
+                        <li class="{{ request()->is('tracking') ? 'active' : '' }}">
+                            <a href="/tracking">
+                                Tracking
+                            </a>
+                        </li>
+
+                        <li class="{{ request()->is('contact') ? 'active' : '' }}">
+                            <a href="/contact">
+                                Contact Us
+                            </a>
+                        </li>
+
+                        
                     </ul>
                 
                 </div><!-- /.navbar-collapse -->

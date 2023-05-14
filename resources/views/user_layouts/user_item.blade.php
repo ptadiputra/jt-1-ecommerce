@@ -5,6 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-9">
+
+
                     <!--
                     MAIN INFO
                     =============================================== -->
@@ -333,6 +335,7 @@
                                                     <a>{{ $review->user->name }}</a>
                                                 </h4>
                                                 {{$review->content}}
+                                                {{$review->ulasan1}}
 
                                                 <span class="media-info">{{ date("d F Y", strtotime($review->created_at)) }}</span>
 
