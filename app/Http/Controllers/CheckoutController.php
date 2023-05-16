@@ -19,36 +19,38 @@ use App\User;
 
 class CheckoutController extends Controller
 {
-    public function checkoutproduk(){
-        $price=0;
-        $total=0;
-        $berat_total=0;
-        $sub_price=0;
+    public function checkoutproduk()
+    {
+        $price = 0;
+        $total = 0;
+        $berat_total = 0;
+        $sub_price = 0;
 
-        $data_cart= Carts::where('user_id', Auth::user()->id)->where('status', 'notyet')->get();
+        $data_cart = Carts::where('user_id', Auth::user()->id)->where('status', 'notyet')->get();
         $data_provinsi = Province::all();
         $data_kota = City::all();
         $data_kurir = Couriers::all();
 
 
-        foreach ($data_cart as $cart){
-            foreach ($cart->produk->diskon as $diskon){
-                if(date('Y-m-d')>= $diskon->start && date('Y-m-d')< $diskon->end){
-                    $price = $cart->produk->price - ($diskon->percentage/100 * $cart->produk->price);
+        foreach ($data_cart as $cart) {
+            foreach ($cart->produk->diskon as $diskon) {
+                if (date('Y-m-d') >= $diskon->start && date('Y-m-d') < $diskon->end) {
+                    $price = $cart->produk->price - ($diskon->percentage / 100 * $cart->produk->price);
                     $total += $price * $cart->qty;
                 }
                 // $sub_price = $total;
             }
-            if($price == 0){
+            if ($price == 0) {
                 $total += $cart->produk->price * $cart->qty;
             }
             $berat_total = $berat_total + ($cart->produk->weight * $cart->qty);
         }
 
-        return view('user_layouts.user_cardpage_2', compact('data_cart','data_provinsi','data_kota','berat_total','data_kurir','total'));
+        return view('user_layouts.user_cardpage_2', compact('data_cart', 'data_provinsi', 'data_kota', 'berat_total', 'data_kurir', 'total'));
     }
 
-    public function cekongkir(Request $request){
+    public function cekongkir(Request $request)
+    {
         $cost = RajaOngkir::ongkosKirim([
             'origin'        => 114, // ID kota/kabupaten asal
             'destination'   => $request->kota, // ID kota/kabupaten tujuan
@@ -59,27 +61,28 @@ class CheckoutController extends Controller
         return response()->json($cost);
     }
 
-    public function store(Request $request){
-        $price=0;
-        $total=0;
+    public function store(Request $request)
+    {
+        $price = 0;
+        $total = 0;
 
-        $data_cart= Carts::where('user_id', Auth::user()->id)->where('status', 'notyet')->get();
+        $data_cart = Carts::where('user_id', Auth::user()->id)->where('status', 'notyet')->get();
 
-        foreach ($data_cart as $cart){
-            foreach ($cart->produk->diskon as $diskon){
-                if(date('Y-m-d')>= $diskon->start && date('Y-m-d')< $diskon->end){
-                    $price = $cart->produk->price - ($diskon->percentage/100 * $cart->produk->price);
+        foreach ($data_cart as $cart) {
+            foreach ($cart->produk->diskon as $diskon) {
+                if (date('Y-m-d') >= $diskon->start && date('Y-m-d') < $diskon->end) {
+                    $price = $cart->produk->price - ($diskon->percentage / 100 * $cart->produk->price);
                     $total += $price * $cart->qty;
                 }
                 // $sub_price = $total;
             }
-            if($price == 0){
+            if ($price == 0) {
                 $total += $cart->produk->price * $cart->qty;
             }
         }
         $transaksi = new Transactions;
         $date_time = strtotime('+1 day');
-        $tanggal_besok = date('Y-m-d H:i:s',$date_time);
+        $tanggal_besok = date('Y-m-d H:i:s', $date_time);
         $transactions = $request->all();
         $transactions['timeout'] = $tanggal_besok;
 
@@ -92,17 +95,17 @@ class CheckoutController extends Controller
         $id_transaksi = $transaksi->create($transactions);
 
         // dd($id_transaksi->user_id);
-        
 
-        foreach($data_cart as $key=>$value){
+
+        foreach ($data_cart as $key => $value) {
             TransactionsDetail::create([
                 'transaction_id' => $id_transaksi->id,
                 'product_id' => $value->product_id,
                 'qty' => $value->qty,
                 'discount' => $request->discount[$key],
-                'selling_price'=> $request->selling_price[$key]
+                'selling_price' => $request->selling_price[$key]
             ]);
-            
+
             Carts::where('user_id', Auth::user()->id)->update([
                 'status' => 'checkedout',
             ]);
@@ -116,9 +119,9 @@ class CheckoutController extends Controller
 
         $admin = Admin::find(5);
         $data = [
-            'nama'=>Auth::user()->name,
-            'massage'=>'Telah melakukan transaksi',
-            'id'=>$id_transaksi->id
+            'nama' => Auth::user()->name,
+            'massage' => 'Telah melakukan transaksi',
+            'id' => $id_transaksi->id
         ];
 
         $data_encode = json_encode($data);
@@ -128,9 +131,9 @@ class CheckoutController extends Controller
 
         $user = User::find($id_transaksi->user_id);
         $data = [
-            'nama'=>Auth::user()->name,
-            'massage'=>'Transaksi anda sedang diproses',
-            'id'=>$id_transaksi->id
+            'nama' => Auth::user()->name,
+            'massage' => 'Transaksi anda sedang diproses',
+            'id' => $id_transaksi->id
         ];
         $data_encode = json_encode($data);
 
@@ -141,11 +144,12 @@ class CheckoutController extends Controller
         // ]);
 
         // dd($id_transaksi->id);
-        return redirect('/produk/upload-pembayaran/'.$id_transaksi->id);
+        return redirect('/produk/upload-pembayaran/' . $id_transaksi->id);
     }
 
-    public function konfirmasiproduk($id){
-        $data_transaksi= Transactions::where('user_id', Auth::user()->id)->find($id);
+    public function konfirmasiproduk($id)
+    {
+        $data_transaksi = Transactions::where('user_id', Auth::user()->id)->find($id);
 
         // $data_transaksi = Transactions::find($id);
         $today = Carbon::now()->setTimezone('GMT+8')->toTimeString();
@@ -158,11 +162,11 @@ class CheckoutController extends Controller
         $batas_waktu = $data_transaksi->timeout;
 
         // dd($tanggal);
-        $selisih_waktu = Carbon::parse($tanggal)->diff($today,false);
+        $selisih_waktu = Carbon::parse($tanggal)->diff($today, false);
         $sec = $selisih_waktu->s;
         $menit = $selisih_waktu->i;
         $jam = $selisih_waktu->h;
-        $deadline = $jam.':'.$menit.':'.$sec;
+        $deadline = $jam . ':' . $menit . ':' . $sec;
 
         // $tanggal_parse = Carbon::parse($tanggal_hariini);
         // $tanggal_hariini_menit = Carbon::parse($tanggal_hariini);
@@ -176,23 +180,23 @@ class CheckoutController extends Controller
         // return($tanggal);
         // dd($data_transaksi->status);
 
-        if($data_transaksi->status == 'unverified'){
+        if ($data_transaksi->status == 'unverified') {
 
-            if($tanggal_hariini >= $end_date){
+            if ($tanggal_hariini >= $end_date) {
                 $data_transaksi->status = 'expired';
                 $data_transaksi->save();
                 // return ('Gagal Bayar');
                 $user = User::find($data_transaksi->user_id);
                 $data = [
-                    'nama'=>Auth::user()->name,
-                    'massage'=>'Transaksi anda telah kadarluarsa',
-                    'id'=>$data_transaksi->id
+                    'nama' => Auth::user()->name,
+                    'massage' => 'Transaksi anda telah kadarluarsa',
+                    'id' => $data_transaksi->id
                 ];
-        
+
                 // dd($data);
-        
+
                 $data_encode = json_encode($data);
-        
+
                 $user->createNotifUser($data_encode);
             }
         }
@@ -203,11 +207,12 @@ class CheckoutController extends Controller
         // }
 
         // return($data_transaksi);
-        
-        return view('user_layouts.user_cardpage_3', compact('deadline','data_transaksi'));
+
+        return view('user_layouts.user_cardpage_3', compact('deadline', 'data_transaksi'));
     }
 
-    public function cancelproduk($id){
+    public function cancelproduk($id)
+    {
         $data_transaksi = Transactions::find($id);
         // $today = Carbon::now()->setTimezone('GMT+8')->toTimeString();
         // $date = Carbon::parse($today);
@@ -216,11 +221,11 @@ class CheckoutController extends Controller
 
         $user = User::find($data_transaksi->user_id);
         $data = [
-            'nama'=>Auth::user()->name,
-            'massage'=>'pembatalan transaksi anda berhasil',
-            'id'=>$data_transaksi->id
+            'nama' => Auth::user()->name,
+            'massage' => 'pembatalan transaksi anda berhasil',
+            'id' => $data_transaksi->id
         ];
-        
+
         // dd($user);
         $data_encode = json_encode($data);
 
@@ -228,9 +233,9 @@ class CheckoutController extends Controller
 
         $admin = Admin::find(5);
         $data = [
-            'nama'=>Auth::user()->name,
-            'massage'=>'Telah membatalkan pesanan',
-            'id'=>$data_transaksi->id
+            'nama' => Auth::user()->name,
+            'massage' => 'Telah membatalkan pesanan',
+            'id' => $data_transaksi->id
         ];
 
         $data_encode = json_encode($data);
@@ -240,15 +245,16 @@ class CheckoutController extends Controller
         return redirect('/kategori');
     }
 
-    public function uploadpembayaran($id, Request $request){
+    public function uploadpembayaran($id, Request $request)
+    {
 
-        $data_transaksi= Transactions::where('user_id', Auth::user()->id)->find($id);
+        $data_transaksi = Transactions::where('user_id', Auth::user()->id)->find($id);
 
-        foreach($request->file('foto_pembayaran') as $foto){
+        foreach ($request->file('foto_pembayaran') as $foto) {
             // dd($data_transaksi->produk->pluck('id'));
 
-            $nama_image = md5(now().'_').$foto->getClientOriginalName();
-            $foto->storeAs('img/buktipembayaran',$nama_image);
+            $nama_image = md5(now() . '_') . $foto->getClientOriginalName();
+            $foto->storeAs('public/img/buktipembayaran', $nama_image);
             // $files[] = [
             //     'proof_of_payment' => $nama_image,
             //     'updated_at' => now()
@@ -264,24 +270,24 @@ class CheckoutController extends Controller
             // ]);
 
             // foreach ($request->pinjam_buku as $databuku ){
-            
+
             //     $data_buku=  Buku::where('id', $databuku)->get()->first();
-                
+
             //     $data_pinjam = 1;
             //     $total = $data_buku->jumlah - $data_pinjam;
-    
+
             //     $buku = Buku::where('id', $data_buku->id)->update([
             //         'jumlah' =>$total
             //     ]);
-    
+
             //     // $total ->update($total->all());
             //     // if($buku){
             //     //     return ('berhasil');
-    
+
             //     // }else{
             //     //     return('gagal');
             //     // }
-    
+
             // }
 
         }
@@ -298,87 +304,87 @@ class CheckoutController extends Controller
         //     ]);
         // }
 
-        return redirect('/produk/sukses-bayar/'.$data_transaksi->id);
+        return redirect('/produk/sukses-bayar/' . $data_transaksi->id);
     }
 
-    public function suksesbayar($id){
-        $data_transaksi= Transactions::where('user_id', Auth::user()->id)->find($id);
+    public function suksesbayar($id)
+    {
+        $data_transaksi = Transactions::where('user_id', Auth::user()->id)->find($id);
 
         // $data_transaksi = Transactions::find($id);
         // $today = Carbon::now()->setTimezone('GMT+8')->toTimeString();
         $tambahlimamenit = $data_transaksi->updated_at->addMinutes(5)->toTimeString();
         // $newDateTime = Carbon::now()->setTimezone('GMT+8')->addMinutes(25)->toTimeString();
         $hariini = Carbon::now()->setTimezone('GMT+8');
-        
+
         $tanggal_hariini = Carbon::parse($hariini);
         $waktu_kirim = Carbon::parse($tambahlimamenit);
         // dd($waktu_kirim);
 
-        if($data_transaksi->status == 'verified'){
-            if($tanggal_hariini >= $waktu_kirim){
+        if ($data_transaksi->status == 'verified') {
+            if ($tanggal_hariini >= $waktu_kirim) {
                 $data_transaksi->status = 'delivered';
                 $data_transaksi->save();
                 // return ('Barang terkirim');
 
                 $user = User::find($data_transaksi->user_id);
                 $data = [
-                    'nama'=>Auth::user()->name,
-                    'massage'=>'Barang pesanan sedang dalam perjalanan',
-                    'id'=>$data_transaksi->id
+                    'nama' => Auth::user()->name,
+                    'massage' => 'Barang pesanan sedang dalam perjalanan',
+                    'id' => $data_transaksi->id
                 ];
-                
+
                 // dd($user);
                 $data_encode = json_encode($data);
-        
+
                 $user->createNotifUser($data_encode);
             }
-
         }
 
-        
+
 
         // return($data_transaksi->status);
-        
+
         return view('user_layouts.user_cardpage_4', compact('data_transaksi'));
     }
 
-    public function addqty($id){
+    public function addqty($id)
+    {
         $cart = Carts::find($id);
-        if($cart->qty >= $cart -> produk -> stock){
-            return response()->json(['status'=>0]);
-        }else{
-            $cart->qty = $cart->qty+1;
+        if ($cart->qty >= $cart->produk->stock) {
+            return response()->json(['status' => 0]);
+        } else {
+            $cart->qty = $cart->qty + 1;
             $cart->save();
 
             $diskonbarang = $cart->produk->getdiskon();
-            if(isset($diskonbarang)){
-                $nilaidiskon = ($cart->produk->price-(($diskonbarang->percentage/ 100)* $cart->produk->price))*$cart->qty;
-            }else{
-                $nilaidiskon = $cart->qty* $cart->produk->price;
+            if (isset($diskonbarang)) {
+                $nilaidiskon = ($cart->produk->price - (($diskonbarang->percentage / 100) * $cart->produk->price)) * $cart->qty;
+            } else {
+                $nilaidiskon = $cart->qty * $cart->produk->price;
             }
-            
-            return response()->json(['status'=>1,'qty'=>$cart->qty, 'nilaidiskon'=>number_format($nilaidiskon)]);
+
+            return response()->json(['status' => 1, 'qty' => $cart->qty, 'nilaidiskon' => number_format($nilaidiskon)]);
         }
     }
 
-    public function minusqty($id){
+    public function minusqty($id)
+    {
         $cart = Carts::find($id);
-        if($cart->qty <= 1){
-            return response()->json(['status'=>0]);
-        }else{
-            $cart->qty = $cart->qty-1;
+        if ($cart->qty <= 1) {
+            return response()->json(['status' => 0]);
+        } else {
+            $cart->qty = $cart->qty - 1;
             $cart->save();
-    
+
             $diskonbarang = $cart->produk->getdiskon();
-            if(isset($diskonbarang)){
-                $nilaidiskon = ($cart->produk->price-(($diskonbarang->percentage/ 100)* $cart->produk->price))*$cart->qty;
-            }else{
-                $nilaidiskon = $cart->qty* $cart->produk->price;
+            if (isset($diskonbarang)) {
+                $nilaidiskon = ($cart->produk->price - (($diskonbarang->percentage / 100) * $cart->produk->price)) * $cart->qty;
+            } else {
+                $nilaidiskon = $cart->qty * $cart->produk->price;
             }
-            
-            return response()->json(['status'=>1,'qty'=>$cart->qty, 'nilaidiskon'=>number_format($nilaidiskon)]);
+
+            return response()->json(['status' => 1, 'qty' => $cart->qty, 'nilaidiskon' => number_format($nilaidiskon)]);
         }
     }
-
-
 }

@@ -1,130 +1,126 @@
 @extends('admin_layouts.admin_master')
 @section('admin_content')
-    
-<!-- Begin Page Content -->
-<div class="container-fluid">
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        <!-- Detail Produk -->
-        <h1 class="h2 mb-2 text-gray-800 text-center">Detail Produk</h1>
 
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            @if (session('sukses'))
-            <div class="alert alert-success" role="alert">
-                {{ session('sukses') }}
-            </div>
-            @endif
-            <div class="card-body">
-                <div class="table-responsive">
-                    <!-- Data -->
-                    <div class="form-group">
-                        <table class="table table-striped table-bordered " align="center">
-                            <tbody>
-                                <tr>
-                                    <th>Nama Produk</th>
-                                    <td>{{ $data_produk->product_name }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Rating Produk</th>
-                                    <td>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+            <!-- Detail Produk -->
+            <h1 class="h2 mb-2 text-gray-800 text-center">Detail Produk</h1>
 
-                                        @if ($data_produk->reviewproduk->avg('rate'))
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                @if (session('sukses'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('sukses') }}
+                    </div>
+                @endif
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <!-- Data -->
+                        <div class="form-group">
+                            <table class="table table-striped table-bordered " align="center">
+                                <tbody>
+                                    <tr>
+                                        <th>Nama Produk</th>
+                                        <td>{{ $data_produk->product_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rating Produk</th>
+                                        <td>
 
-                                            @for ($i = 0; $i < 5; $i++)
-                                                @if (floor($data_produk->reviewproduk->avg('rate')) - $i >= 1)
-                                                {{--Full Start--}}
-                                                    <i class="fas fa-star text-warning"> </i>
-                                                @elseif ($data_produk->reviewproduk->avg('rate') - $i > 0)
-                                                {{--Half Start--}}
-                                                    <i class="fas fa-star-half-alt text-warning"> </i>
-                                                @else
-                                                {{--Empty Start--}}
-                                                    <i class="far fa-star text-warning"> </i>
-                                                @endif
-                                            @endfor
-        
-        
-                                        @else
-                                            @for ($i = 0; $i < 5; $i++)
-                                                <i class="far fa-star"></i>
-                                            @endfor
-        
-                                        @endif
+                                            @if ($data_produk->reviewproduk->avg('rate'))
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    @if (floor($data_produk->reviewproduk->avg('rate')) - $i >= 1)
+                                                        {{-- Full Start --}}
+                                                        <i class="fas fa-star text-warning"> </i>
+                                                    @elseif ($data_produk->reviewproduk->avg('rate') - $i > 0)
+                                                        {{-- Half Start --}}
+                                                        <i class="fas fa-star-half-alt text-warning"> </i>
+                                                    @else
+                                                        {{-- Empty Start --}}
+                                                        <i class="far fa-star text-warning"> </i>
+                                                    @endif
+                                                @endfor
+                                            @else
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    <i class="far fa-star"></i>
+                                                @endfor
+                                            @endif
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Stock</th>
-                                    <td>{{ $data_produk->stock }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Berat (gr)</th>
-                                    <td>{{ $data_produk->weight }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Harga</th>
-                                    <td>Rp.{{number_format($data_produk->price) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Deskripsi</th>
-                                    <td style="max-width: 350px">{{ $data_produk->description }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Kategori</th>
-                                    <td>
-                                        @foreach ($daftarkategori as $kategori)
-                                        <li>
-                                            {{ $kategori}}
-                                        </li>    
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Diskon</th>
-                                    <td>
-                                        @foreach ($daftardiskon as $diskon)
-                                        <li>
-                                            {{$diskon->percentage}}%
-                                        </li>    
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Stock</th>
+                                        <td>{{ $data_produk->stock }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Berat (gr)</th>
+                                        <td>{{ $data_produk->weight }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Harga</th>
+                                        <td>Rp.{{ number_format($data_produk->price) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Deskripsi</th>
+                                        <td style="max-width: 350px">{{ $data_produk->description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kategori</th>
+                                        <td>
+                                            @foreach ($daftarkategori as $kategori)
+                                                <li>
+                                                    {{ $kategori }}
+                                                </li>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Diskon</th>
+                                        <td>
+                                            @foreach ($daftardiskon as $diskon)
+                                                <li>
+                                                    {{ $diskon->percentage }}%
+                                                </li>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Circle Buttons (Default) -->
+                        <a href="/admin/produk/{{ $data_produk->id }}/edit" class="btn btn-warning btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-pen"></i>
+                            </span>
+                            <span class="text">Edit Produk</span>
+                        </a>
+                        <a href="/admin/produk/{{ $data_produk->id }}/buatfoto" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span class="text">Tambah Foto Produk</span>
+                        </a>
                     </div>
                 </div>
-                <div class="card-body">
-                    <!-- Circle Buttons (Default) -->
-                    <a href="/admin/produk/{{ $data_produk->id }}/edit" class="btn btn-warning btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-pen"></i>
-                        </span>
-                        <span class="text">Edit Produk</span>
-                    </a>
-                    <a href="/admin/produk/{{ $data_produk->id }}/buatfoto" class="btn btn-success btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span class="text">Tambah Foto Produk</span>
-                    </a>
-                </div>
             </div>
-        </div>
 
-        <!-- Foto Produk -->
-        <h1 class="h2 mb-2 text-gray-800 text-center">Foto Produk</h1>
+            <!-- Foto Produk -->
+            <h1 class="h2 mb-2 text-gray-800 text-center">Foto Produk</h1>
 
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-body">
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
 
-                <!-- Image & Caption -->
-                <div class="body">
+                    <!-- Image & Caption -->
+                    <div class="body">
 
-                    <!-- Set up your HTML -->
-                    {{-- <div class="owl-carousel">
+                        <!-- Set up your HTML -->
+                        {{-- <div class="owl-carousel">
                         <div> Your Content </div>
                         <div> Your Content </div>
                         <div> Your Content </div>
@@ -134,26 +130,28 @@
                         <div> Your Content </div>
                     </div> --}}
 
-                    <div class="table">
-                        <div class="row text-center owl-carousel">
-                            @foreach ($data_produk->productimage as $image)
-                                <div class="thumbnail">
-                                    <img class="img-fluid-left img-thumbnail" src="{{ $image->image }}" alt="light" style="height:200px;">
-                                    <form action="/admin/produk/{{$image->id}}/deletegambar" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin mengedit data ini?')">
+                        <div class="table">
+                            <div class="row text-center owl-carousel">
+                                @foreach ($data_produk->productimage as $image)
+                                    <div class="thumbnail">
+                                        <img class="img-fluid-left img-thumbnail" src="{{ $image->image }}" alt="light"
+                                            style="height:200px;">
+                                        <form action="/admin/produk/{{ $image->id }}/deletegambar" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Anda yakin ingin mengedit data ini?')">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                    </form>
-                                </div>
-                            @endforeach
+                                        </form>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
 
-                    {{-- <img src="{{ asset('pengguna/html/images/shop/img-02.jpg') }}" class="img-thumbnail" alt="..."> --}}
+                        {{-- <img src="{{ asset('pengguna/html/images/shop/img-02.jpg') }}" class="img-thumbnail" alt="..."> --}}
 
-                    {{-- <!-- Header -->
+                        {{-- <!-- Header -->
                     <div class="comp-header st-4 text-uppercase">
 
                         Jacket
@@ -230,10 +228,10 @@
                         <!-- Timer -->
                         <div class="timer-body">
                             <span class="sale text-red">Sale</span>
-                            <span class="tdtimer-d"></span>d 
-                            <span class="tdtimer-h"></span>h 
-                            <span class="tdtimer-m"></span>m 
-                            <span class="tdtimer-s"></span>s 
+                            <span class="tdtimer-d"></span>d
+                            <span class="tdtimer-h"></span>h
+                            <span class="tdtimer-m"></span>m
+                            <span class="tdtimer-s"></span>s
                         </div>
 
                         <!-- Features list -->
@@ -258,9 +256,9 @@
                         </p>
                     </div> --}}
 
-                </div>
+                    </div>
 
-                {{-- <div class="table-responsive">
+                    {{-- <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -297,65 +295,66 @@
                     </table>
                 </div> --}}
 
-            </div>
-        </div>
-
-        <!-- Review Produk -->
-        <h1 class="h2 mb-2 text-gray-800 text-center">Review Produk</h1>
-
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">No</th>
-                                <th class="text-center">Nama User</th>
-                                <th class="text-center">Rate</th>
-                                <th class="text-center">Review</th>
-                                <th class="text-center">Respone</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data_produk->reviewproduk as $no => $produk)
-                            <tr>
-                                <td>{{ $no+1 }}</td>
-                                {{-- @foreach ($produk->reviewproduk as $review) --}}
-                                <td>{{ $produk->user->name }}</td>
-                                    
-                                {{-- @endforeach --}}
-
-                                <td>{{ $produk->rate }}</td>
-                                <td>{{ $produk->content }}</td>
-                                <td>
-                                    @foreach ($produk->response as $response)
-                                        {{ $response->content}},
-                                    @endforeach
-
-                                </td>
-                                <td class="text-center">
-                                    <a href="/admin/response/{{ $produk->id }}" class="btn btn-primary btn-circle btn-sm">
-                                        <i class="fas fa-comments"></i>
-                                    </a>
-                                </td>
-                                    
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
             </div>
+
+            <!-- Review Produk -->
+            <h1 class="h2 mb-2 text-gray-800 text-center">Review Produk</h1>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Nama User</th>
+                                    <th class="text-center">Rate</th>
+                                    <th class="text-center">Review</th>
+                                    <th class="text-center">Respone</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data_produk->reviewproduk as $no => $produk)
+                                    <tr>
+                                        <td>{{ $no + 1 }}</td>
+                                        {{-- @foreach ($produk->reviewproduk as $review) --}}
+                                        <td>{{ $produk->user->name }}</td>
+
+                                        {{-- @endforeach --}}
+
+                                        <td>{{ $produk->rate }}</td>
+                                        <td>{{ $produk->content }}</td>
+                                        <td>
+                                            @foreach ($produk->response as $response)
+                                                {{ $response->content }},
+                                            @endforeach
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="/admin/response/{{ $produk->id }}"
+                                                class="btn btn-primary btn-circle btn-sm">
+                                                <i class="fas fa-comments"></i>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <!-- /.container-fluid -->
 
     </div>
     <!-- /.container-fluid -->
 
-</div>
-<!-- /.container-fluid -->
-
-{{-- <!-- Modal -->
+    {{-- <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -30,8 +30,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-     protected $redirectTo = '/home';
-    
+    protected $redirectTo = '/home';
+
 
     /**
      * Create a new controller instance.
@@ -43,7 +43,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
         $this->middleware('guest:admin');
         $this->middleware('guest:costumer');
-
     }
 
     /**
@@ -55,13 +54,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' =>'required|string|max:255', 
-            'email' =>'required|string|email|max:255|unique:users',
-            'password' =>'required|string|min:6|confirmed',
-             
-             ]);
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+
+        ]);
     }
-   
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -95,10 +94,10 @@ class RegisterController extends Controller
             // $foto->storeAs('img/profilepengguna',$nama_image),
             // 'profile_image' => $nama_image,
 
-            
+
             // foreach($data->file('foto_pengguna') as $foto){
             //     // dd($data_transaksi->produk->pluck('id'));
-    
+
             //     $nama_image = md5(now().'_').$foto->getClientOriginalName();
             //     $foto->storeAs('img/profilepengguna',$nama_image);
 
@@ -106,11 +105,10 @@ class RegisterController extends Controller
             //     $data_transaksi->proof_of_payment = $nama_image;
 
             //     $data_transaksi->save();
-    
-            // }
-           
-        ]);
 
+            // }
+
+        ]);
     }
 
     /**
@@ -132,7 +130,7 @@ class RegisterController extends Controller
             // $foto->storeAs('img/profilepengguna',$nama_image),
             // 'profile_image' => $nama_image,
 
-          
+
         ]);
         return redirect()->intended('login/admin');
     }
@@ -149,10 +147,8 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            
+
         ]);
         return redirect()->intended('login/costumer');
     }
-     
-    
-} 
+}
